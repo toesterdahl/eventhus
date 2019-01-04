@@ -113,7 +113,7 @@ func (c *Client) save(events []eventhus.Event, version int, safe bool) error {
 	// since loading the aggregate).
 
 	err := c.session.Update(func(txn *badger.Txn) error {
-		item, err := txn.Get([]byte("aggregateID"))
+		item, err := txn.Get([]byte(aggregateID))
 		if err != nil {
 			return err
 		}
